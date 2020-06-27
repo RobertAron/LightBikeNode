@@ -1,0 +1,21 @@
+{
+  "name": "lightbikenode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild":"docker stop light-bike-node && docker rm light-bike-node || exit 0",
+    "build": "docker build . -t light-bike-node",
+    "postbuild": "docker run -it -p 80:80 --name=light-bike-node light-bike-node",
+    "prepublish": "docker tag light-bike-node gcr.io/lightbikenode/light-bike && docker push gcr.io/lightbikenode/light-bike",
+    "publish": "terraform apply"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
