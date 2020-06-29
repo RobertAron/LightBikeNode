@@ -93,7 +93,7 @@ resource "google_compute_backend_service" "default" {
   name        = "light-bike-backend-service"
   port_name   = "http"
   protocol    = "HTTP"
-
+  timeout_sec = 86400 # let people stay connected for 5 hours
   backend {
     group = google_compute_instance_group.instance_group.self_link
   }
