@@ -8,7 +8,7 @@ provider "google-beta" {
 }
 
 module "auto-single-lb" {
-  source = "./modules"
+  source = "git::github.com/RobertAron/SingleServerGcloud?ref=v0.1"
   image  = "gcr.io/lightbikenode/light-bike"
   domain = "light.bike.robertaron.io"
 }
